@@ -10,49 +10,41 @@ touch "$MOCK_MOUNTS_FILE"
 mount_point=""
 device=""
 
-while [[ $# -gt 0 ]]; do
-    case "$1" in
-        -o)
-            shift
+# 解析参数，只处理 -o, -t 和以 / 开头的路径参数
+for arg in "$@"; do
+    case "$arg" in
+        -o|--*)
+            # 跳过选项及其值
+            continue
             ;;
         -t)
-            shift
+            continue
             ;;
         /*)
             if [[ -z "$device" ]]; then
-                device="$1"
+                device="$arg"
             else
-                mount_point="$1"
+                mount_point="$arg"
             fi
             ;;
     esac
-    shift
 done
 
 # 如果没有传递设备和挂载点，显示帮助
-if [[ -z "$device" && -z "$mount_point" ]]; then
-    cat << 'EOF'
-Usage: mount [-h] [-v] [-r] [-w] [-o options] [-t type] device [mntpt]
-
-Options:
-  -h                display this help and exit
-  -V                display version and exit
-EOF
-    exit 0
-fi
-
-# 检查是否已挂载
-if grep -q "^${device} " "$MOCK_MOUNTS_FILE" 2>/dev/null; then
-    echo "mount: /dev/${device##*/} already mounted"
+if [[ -z "$device" || -z "$mount_point" ]]; then
+    echo "Usage: mount device mountpoint" >&2
     exit 1
 fi
 
-# 模拟挂载成功 - 创建mock设备文件（如果不存在）
-mock_dev_dir="$(dirname "$device")"
-if [[ ! -d "$mock_dev_dir" ]]; then
-    mkdir -p "$mock_dev_dir"
-fi
-touch "$device"
+# 提取设备名称（去除路径中的 /dev/ 前缀或完整路径）
+device_name="${device##*/}"
 
-echo "$device $mount_point" >> "$MOCK_MOUNTS_FILE"
+# 检查是否已挂载（使用设备名称匹配）
+if grep -q " ${device_name} " "$MOCK_MOUNTS_FILE" 2>/dev/null; then
+    echo "mount: $device_name already mounted" >&2
+    exit 1
+fi
+
+# 模拟挂载成功 - 记录挂载信息
+echo "${device_name} ${mount_point}" >> "$MOCK_MOUNTS_FILE"
 exit 0

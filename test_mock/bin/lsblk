@@ -1,30 +1,280 @@
 #!/bin/bash
-# Mock lsblk - 返回200个模拟大容量磁盘数据
+cat << 'LSBLK_EOF'
+NAME TYPE RO SIZE MOUNTPOINT
+sd001 disk 0 26TB -
+sd002 disk 0 20TB -
+sd003 disk 0 20TB -
+sd004 disk 0 20TB -
+sd005 disk 0 18TB -
+sd006 disk 0 18TB -
+sd007 disk 0 18TB -
+sd008 disk 0 20TB -
+sd009 disk 0 18TB -
+sd010 disk 0 26TB -
+sd011 disk 0 20TB -
+sd012 disk 0 24TB -
+sd013 disk 0 20TB -
+sd014 disk 0 22TB -
+sd015 disk 0 16TB -
+sd016 disk 0 26TB -
+sd017 disk 0 32TB -
+sd018 disk 0 32TB -
+sd019 disk 0 18TB -
+sd020 disk 0 15TB -
+sd021 disk 0 24TB -
+sd022 disk 0 20TB -
+sd023 disk 0 16TB -
+sd024 disk 0 22TB -
+sd025 disk 0 16TB -
+sd026 disk 0 20TB -
+sd027 disk 0 26TB -
+sd028 disk 0 26TB -
+sd029 disk 0 22TB -
+sd030 disk 0 22TB -
+sd031 disk 0 24TB -
+sd032 disk 0 14TB -
+sd033 disk 0 16TB -
+sd034 disk 0 16TB -
+sd035 disk 0 20TB -
+sd036 disk 0 14TB -
+sd037 disk 0 16TB -
+sd038 disk 0 20TB -
+sd039 disk 0 20TB -
+sd040 disk 0 32TB -
+sd041 disk 0 20TB -
+sd042 disk 0 20TB -
+sd043 disk 0 22TB -
+sd044 disk 0 22TB -
+sd045 disk 0 32TB -
+sd046 disk 0 26TB -
+sd047 disk 0 20TB -
+sd048 disk 0 16TB -
+sd049 disk 0 32TB -
+sd050 disk 0 20TB -
+sd051 disk 0 32TB -
+sd052 disk 0 24TB -
+sd053 disk 0 22TB -
+sd054 disk 0 18TB -
+sd055 disk 0 18TB -
+sd056 disk 0 15TB -
+sd057 disk 0 18TB -
+sd058 disk 0 32TB -
+sd059 disk 0 32TB -
+sd060 disk 0 14TB -
+sd061 disk 0 18TB -
+sd062 disk 0 24TB -
+sd063 disk 0 20TB -
+sd064 disk 0 16TB -
+sd065 disk 0 26TB -
+sd066 disk 0 26TB -
+sd067 disk 0 20TB -
+sd068 disk 0 32TB -
+sd069 disk 0 20TB -
+sd070 disk 0 15TB -
+sd071 disk 0 20TB -
+sd072 disk 0 22TB -
+sd073 disk 0 32TB -
+sd074 disk 0 16TB -
+sd075 disk 0 32TB -
+sd076 disk 0 14TB -
+sd077 disk 0 20TB -
+sd078 disk 0 26TB -
+sd079 disk 0 26TB -
+sd080 disk 0 18TB -
+sd081 disk 0 26TB -
+sd082 disk 0 20TB -
+sd083 disk 0 26TB -
+sd084 disk 0 24TB -
+sd085 disk 0 18TB -
+sd086 disk 0 32TB -
+sd087 disk 0 24TB -
+sd088 disk 0 22TB -
+sd089 disk 0 20TB -
+sd090 disk 0 32TB -
+sd091 disk 0 20TB -
+sd092 disk 0 20TB -
+sd093 disk 0 20TB -
+sd094 disk 0 32TB -
+sd095 disk 0 20TB -
+sd096 disk 0 15TB -
+sd097 disk 0 24TB -
+sd098 disk 0 20TB -
+sd099 disk 0 18TB -
+sd100 disk 0 26TB -
+sd101 disk 0 24TB -
+sd102 disk 0 20TB -
+sd103 disk 0 20TB -
+sd104 disk 0 16TB -
+sd105 disk 0 22TB -
+sd106 disk 0 18TB -
+sd107 disk 0 20TB -
+sd108 disk 0 16TB -
+sd109 disk 0 20TB -
+sd110 disk 0 32TB -
+sd111 disk 0 22TB -
+sd112 disk 0 32TB -
+sd113 disk 0 22TB -
+sd114 disk 0 16TB -
+sd115 disk 0 18TB -
+sd116 disk 0 14TB -
+sd117 disk 0 24TB -
+sd118 disk 0 15TB -
+sd119 disk 0 15TB -
+sd120 disk 0 15TB -
+sd121 disk 0 20TB -
+sd122 disk 0 16TB -
+sd123 disk 0 20TB -
+sd124 disk 0 14TB -
+sd125 disk 0 26TB -
+sd126 disk 0 20TB -
+sd127 disk 0 14TB -
+sd128 disk 0 26TB -
+sd129 disk 0 22TB -
+sd130 disk 0 20TB -
+sd131 disk 0 16TB -
+sd132 disk 0 22TB -
+sd133 disk 0 18TB -
+sd134 disk 0 15TB -
+sd135 disk 0 20TB -
+sd136 disk 0 16TB -
+sd137 disk 0 20TB -
+sd138 disk 0 26TB -
+sd139 disk 0 22TB -
+sd140 disk 0 20TB -
+sd141 disk 0 18TB -
+sd142 disk 0 20TB -
+sd143 disk 0 26TB -
+sd144 disk 0 20TB -
+sd145 disk 0 20TB -
+sd146 disk 0 20TB -
+sd147 disk 0 14TB -
+sd148 disk 0 26TB -
+sd149 disk 0 22TB -
+sd150 disk 0 20TB -
+sd151 disk 0 26TB -
+sd152 disk 0 15TB -
+sd153 disk 0 26TB -
+sd154 disk 0 24TB -
+sd155 disk 0 15TB -
+sd156 disk 0 14TB -
+sd157 disk 0 20TB -
+sd158 disk 0 24TB -
+sd159 disk 0 20TB -
+sd160 disk 0 26TB -
+sd161 disk 0 16TB -
+sd162 disk 0 14TB -
+sd163 disk 0 22TB -
+sd164 disk 0 26TB -
+sd165 disk 0 24TB -
+sd166 disk 0 18TB -
+sd167 disk 0 20TB -
+sd168 disk 0 16TB -
+sd169 disk 0 24TB -
+sd170 disk 0 20TB -
+sd171 disk 0 16TB -
+sd172 disk 0 24TB -
+sd173 disk 0 22TB -
+sd174 disk 0 14TB -
+sd175 disk 0 24TB -
+sd176 disk 0 20TB -
+sd177 disk 0 18TB -
+sd178 disk 0 20TB -
+sd179 disk 0 20TB -
+sd180 disk 0 16TB -
+sd181 disk 0 20TB -
+sd182 disk 0 32TB -
+sd183 disk 0 20TB -
+sd184 disk 0 22TB -
+sd185 disk 0 18TB -
+sd186 disk 0 18TB -
+sd187 disk 0 16TB -
+sd188 disk 0 15TB -
+sd189 disk 0 20TB -
+sd190 disk 0 22TB -
+sd191 disk 0 32TB -
+sd192 disk 0 20TB -
+sd193 disk 0 15TB -
+sd194 disk 0 18TB -
+sd195 disk 0 26TB -
+sd196 disk 0 32TB -
+sd197 disk 0 32TB -
+sd198 disk 0 20TB -
+sd199 disk 0 24TB -
+sd200 disk 0 22TB -
+sd201 disk 0 14TB -
+sd202 disk 0 26TB -
+sd203 disk 0 24TB -
+sd204 disk 0 20TB -
+sd205 disk 0 18TB -
+sd206 disk 0 18TB -
+sd207 disk 0 24TB -
+sd208 disk 0 20TB -
+sd209 disk 0 18TB -
+sd210 disk 0 20TB -
+sd211 disk 0 16TB -
+sd212 disk 0 18TB -
+sd213 disk 0 20TB -
+sd214 disk 0 32TB -
+sd215 disk 0 20TB -
+sd216 disk 0 22TB -
+sd217 disk 0 20TB -
+sd218 disk 0 20TB -
+sd219 disk 0 32TB -
+sd220 disk 0 24TB -
+sd221 disk 0 32TB -
+sd222 disk 0 15TB -
+sd223 disk 0 18TB -
+sd224 disk 0 15TB -
+sd225 disk 0 26TB -
+sd226 disk 0 14TB -
+sd227 disk 0 20TB -
+sd228 disk 0 20TB -
+sd229 disk 0 18TB -
+sd230 disk 0 20TB -
+sd231 disk 0 16TB -
+sd232 disk 0 20TB -
+sd233 disk 0 20TB -
+sd234 disk 0 15TB -
+sd235 disk 0 22TB -
+sd236 disk 0 24TB -
+sd237 disk 0 20TB -
+sd238 disk 0 20TB -
+sd239 disk 0 14TB -
+sd240 disk 0 22TB -
+sd241 disk 0 14TB -
+sd242 disk 0 26TB -
+sd243 disk 0 20TB -
+sd244 disk 0 15TB -
+sd245 disk 0 20TB -
+sd246 disk 0 18TB -
+sd247 disk 0 14TB -
+sd248 disk 0 18TB -
+sd249 disk 0 20TB -
+sd250 disk 0 32TB -
+sd251 disk 0 32TB -
+sd252 disk 0 26TB -
+sd253 disk 0 20TB -
+sd254 disk 0 22TB -
+sd255 disk 0 20TB -
+sd256 disk 0 20TB -
+sd257 disk 0 15TB -
+sd258 disk 0 26TB -
+sd259 disk 0 20TB -
+sd260 disk 0 32TB -
+sd261 disk 0 20TB -
+sd262 disk 0 32TB -
+sd263 disk 0 22TB -
+sd264 disk 0 26TB -
+sd265 disk 0 16TB -
+sd266 disk 0 16TB -
+sd267 disk 0 18TB -
+sd268 disk 0 32TB -
+sd269 disk 0 20TB -
+sd270 disk 0 32TB -
+sd271 disk 0 24TB -
+sd272 disk 0 20TB -
+sd273 disk 0 20TB -
+sd274 disk 0 32TB -
+sd275 disk 0 18TB -
 
-if [[ "$1" == "-l" ]]; then
-    # List 模式 - 生成200个磁盘
-    echo "NAME TYPE RO SIZE MOUNTPOINT"
-    for i in $(seq 1 200); do
-        # 生成 4T-10T 之间的容量
-        size=$((4 + (i % 7)))
-        # 格式化编号
-        num=$(printf "%03d" $i)
-        echo "sd${num} disk 0 ${size}T -"
-    done
-elif [[ "$1" == "-o" ]]; then
-    shift
-    cols="$1"
-    case "$cols" in
-        NAME,SIZE)
-            for i in $(seq 1 200); do
-                size=$((4 + (i % 7)))
-                echo "sd$(printf "%03d" $i) ${size}T"
-            done
-            ;;
-        *)
-            lsblk -l 2>/dev/null | awk 'NR==1 || $2=="disk" {print}'
-            ;;
-    esac
-else
-    lsblk -l 2>/dev/null | awk 'NR==1 || $2=="disk" {print}'
-fi
+LSBLK_EOF

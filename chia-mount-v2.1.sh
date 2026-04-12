@@ -124,7 +124,7 @@ Get_Disk_Info() {
     LSBLK_OUTPUT=$(lsblk -l)
 
     # 提取磁盘信息
-    local disk_raw=$(echo "$LSBLK_OUTPUT" | grep -i "disk" | awk '$4 ~ /T/' | sed 's/T//g' | awk '$4 > 3.6' | sort -k 4 -r | awk '{print $1}')
+    local disk_raw=$(echo "$LSBLK_OUTPUT" | grep -i "disk" | awk '$4 ~ /T/' | sed 's/T//g' | awk '$4+0 > 3.6' | sort -k 4 -r | awk '{print $1}')
     if [ -n "$disk_raw" ]; then
         # 将换行替换为空格，兼容 bash 3.2
         Disk_Temp_Device_Arr=($(echo "$disk_raw" | tr '\n' ' '))
@@ -135,9 +135,9 @@ Get_Disk_Info() {
     unset Disk_Total_Device_Arr
     for i in ${Disk_Temp_Device_Arr[*]}; do
         # 检查是否有分区，使用已缓存的输出
-        if [[ -n "$(echo "$LSBLK_OUTPUT" | awk '$4 ~ /T/' | sed 's/T//g' | awk '$4 > 3.6' | grep -i "^${i}p[1-4]")" ]]; then
+        if [[ -n "$(echo "$LSBLK_OUTPUT" | awk '$4 ~ /T/' | sed 's/T//g' | awk '$4+0 > 3.6' | grep -i "^${i}p[1-4]")" ]]; then
             # 使用最后一个分区
-            Disk_Total_Device_Arr[${#Disk_Total_Device_Arr[@]}]=$(echo "$LSBLK_OUTPUT" | awk '$4 ~ /T/' | sed 's/T//g' | awk '$4 > 3.6' | grep -i "^${i}p[1-4]" | tail -n 1 | awk '{print $1}')
+            Disk_Total_Device_Arr[${#Disk_Total_Device_Arr[@]}]=$(echo "$LSBLK_OUTPUT" | awk '$4 ~ /T/' | sed 's/T//g' | awk '$4+0 > 3.6' | grep -i "^${i}p[1-4]" | tail -n 1 | awk '{print $1}')
         else
             # 使用整个磁盘
             Disk_Total_Device_Arr[${#Disk_Total_Device_Arr[@]}]="$i"

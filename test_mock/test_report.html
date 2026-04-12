@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chia Mount 脚本模拟测试报告</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .summary {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .summary-item {
+            text-align: center;
+        }
+        .summary-value {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .summary-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .success { color: #28a745; }
+        .failure { color: #dc3545; }
+        .test-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .test-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .test-status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .test-status.failure {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .test-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .info-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .info-label {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-weight: bold;
+            color: #333;
+        }
+        .models-list {
+            margin-top: 15px;
+        }
+        .model-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #e9ecef;
+            border-radius: 15px;
+            margin: 5px 5px 5px 0;
+            font-size: 13px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chia Mount 脚本模拟测试报告</h1>
+        <p style="text-align: center; color: #666;">生成时间: 2026-04-12 15:53:26</p>
+
+        <div class="summary">
+            <div class="summary-item">
+                <div class="summary-value">10</div>
+                <div class="summary-label">总测试数</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-value success">10</div>
+                <div class="summary-label">成功</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-value failure">0</div>
+                <div class="summary-label">失败</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-value">1943</div>
+                <div class="summary-label">总成功挂载</div>
+            </div>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #1: HC620 SMR专用测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">100</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">100</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">20</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 100%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">仅使用WD HC620型号，模拟真实场景</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #2: HC620 + Gold混合测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">150</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">150</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">25</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 50%</span><span class="model-tag">WD Gold (18TB, 20TB) - 50%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">HC620与其他型号混合</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #3: Seagate Exos系列测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">180</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">180</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">30</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">Seagate Exos X18 (16TB, 18TB) - 40%</span><span class="model-tag">Seagate Exos X20 (20TB) - 40%</span><span class="model-tag">Seagate Exos X24 (24TB) - 20%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">仅使用Seagate Exos系列</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #4: 大规模磁盘测试(200+)</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">220</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">220</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">40</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 30%</span><span class="model-tag">WD Gold (16TB, 18TB, 20TB) - 30%</span><span class="model-tag">Seagate Exos X18 (18TB) - 20%</span><span class="model-tag">Seagate Exos X20 (20TB) - 20%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">测试200+磁盘的并发挂载</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #5: 高并发测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">120</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">120</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">50</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 100%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">测试50并发挂载</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #6: 超大规模测试(288磁盘)</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">288</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">288</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">50</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 40%</span><span class="model-tag">WD Gold (18TB, 20TB) - 30%</span><span class="model-tag">Seagate Exos X20 (20TB) - 30%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">测试最大规模磁盘数量</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #7: 全型号混合测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">200</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">200</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">35</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 20%</span><span class="model-tag">WD Gold (16TB, 18TB, 20TB) - 20%</span><span class="model-tag">Seagate Exos X18 (16TB, 18TB) - 20%</span><span class="model-tag">Seagate Exos X20 (20TB) - 20%</span><span class="model-tag">Seagate IronWolf Pro (20TB, 22TB) - 20%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">所有品牌型号混合</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #8: 极限容量测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">160</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">160</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">30</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC690 (32TB) - 30%</span><span class="model-tag">WD Ultrastar DC HC590 (26TB) - 30%</span><span class="model-tag">Seagate Exos X24 (24TB) - 40%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">使用最大容量型号</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #9: CHIA专用优化测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">250</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">250</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">45</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 60%</span><span class="model-tag">WD Gold (18TB, 20TB) - 40%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">模拟CHIA农场常见配置</p>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">测试 #10: 最终全面测试</div>
+                <div class="test-status success">成功</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">磁盘数量</div>
+                    <div class="info-value">275</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">成功挂载</div>
+                    <div class="info-value success">275</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">失败挂载</div>
+                    <div class="info-value failure">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">并发数</div>
+                    <div class="info-value">50</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">退出码</div>
+                    <div class="info-value">0</div>
+                </div>
+            </div>
+            <div class="models-list">
+                <div class="info-label">磁盘型号配置:</div>
+<span class="model-tag">WD Ultrastar DC HC620 (14TB, 15TB) - 25%</span><span class="model-tag">WD Gold (16TB, 18TB, 20TB) - 25%</span><span class="model-tag">Seagate Exos X18 (18TB) - 25%</span><span class="model-tag">Seagate Exos X20 (20TB) - 25%</span>
+            </div>
+            <div class="info-label" style="margin-top: 15px;">测试描述:</div>
+            <p style="color: #666; margin-top: 5px;">综合所有情况进行最终验证</p>
+        </div>
+
+        <div class="footer">
+            <p>Chia Mount 脚本 - 模拟测试报告</p>
+            <p>包含 WD HC620, WD Gold, Seagate Exos X18/X20/X24 等多种磁盘型号</p>
+        </div>
+    </div>
+</body>
+</html>

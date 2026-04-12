@@ -1,0 +1,104 @@
+{
+  "disk_models": [
+    {
+      "model": "WD Ultrastar DC HC620",
+      "capacities": ["14TB", "15TB"],
+      "type": "SMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps/SAS 12Gbps",
+      "cache": "512MB",
+      "mtbf": "250万小时",
+      "description": "Host-Managed SMR, HelioSeal氦气密封"
+    },
+    {
+      "model": "WD Gold",
+      "capacities": ["16TB", "18TB", "20TB", "22TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps",
+      "cache": "512MB",
+      "mtbf": "250万小时",
+      "description": "企业级CMR, 氦气密封"
+    },
+    {
+      "model": "WD Ultrastar DC HC590",
+      "capacities": ["26TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA/SAS",
+      "cache": "512MB",
+      "mtbf": "250万小时",
+      "description": "企业级CMR, OptiNAND技术"
+    },
+    {
+      "model": "WD Ultrastar DC HC690",
+      "capacities": ["32TB"],
+      "type": "SMR",
+      "rpm": 7200,
+      "interface": "SATA/SAS",
+      "cache": "512MB",
+      "mtbf": "250万小时",
+      "description": "企业级SMR, 最高容量"
+    },
+    {
+      "model": "Seagate Exos X18",
+      "capacities": ["16TB", "18TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps/SAS 12Gbps",
+      "cache": "256MB",
+      "mtbf": "250万小时",
+      "description": "氦气密封, 十碟片工艺"
+    },
+    {
+      "model": "Seagate Exos X20",
+      "capacities": ["20TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps/SAS 12Gbps",
+      "cache": "256MB",
+      "mtbf": "250万小时",
+      "description": "单碟2TB, 十碟片工艺"
+    },
+    {
+      "model": "Seagate Exos X24",
+      "capacities": ["24TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps/SAS 12Gbps",
+      "cache": "256MB",
+      "mtbf": "250万小时",
+      "description": "最新24TB容量"
+    },
+    {
+      "model": "Seagate IronWolf Pro",
+      "capacities": ["20TB", "22TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps",
+      "cache": "256MB",
+      "mtbf": "250万小时",
+      "description": "NAS专用, 氦气密封"
+    },
+    {
+      "model": "WD Red Pro",
+      "capacities": ["18TB", "20TB", "22TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps",
+      "cache": "512MB",
+      "mtbf": "100万小时",
+      "description": "NAS专用"
+    },
+    {
+      "model": "Toshiba MG Series",
+      "capacities": ["16TB", "18TB", "20TB"],
+      "type": "CMR",
+      "rpm": 7200,
+      "interface": "SATA 6Gbps/SAS 12Gbps",
+      "cache": "512MB",
+      "mtbf": "120万小时",
+      "description": "企业级, 氦气密封"
+    }
+  ]
+}

@@ -1,10 +1,7 @@
 #!/bin/bash
-# Mock df - 返回模拟已挂载的磁盘
-
-# 模拟已挂载的磁盘（测试用：sda2 和 sdb2 已挂载）
-cat << 'EOF'
+cat << 'DF_EOF'
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda2       500G   50G  450G  10% /
 /dev/sdb2       200G  100G  100G  50% /boot
 tmpfs            64M     0   64M   0% /run
-EOF
+DF_EOF
