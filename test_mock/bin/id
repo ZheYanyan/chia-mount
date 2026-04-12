@@ -1,0 +1,8 @@
+#!/bin/bash
+# Mock id - 模拟 root 用户
+
+if [[ "$1" == "-u" ]]; then
+    echo "0"
+else
+    echo "uid=0(root) gid=0(root) groups=0(root)"
+fi

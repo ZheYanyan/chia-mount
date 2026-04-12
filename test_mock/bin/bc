@@ -1,0 +1,10 @@
+#!/bin/bash
+# Mock bc - 使用 perl 模拟 bc 计算器
+
+if command -v bc >/dev/null 2>&1; then
+    # 如果系统有 bc，用系统的
+    /usr/bin/bc "$@"
+else
+    # 用 perl 模拟
+    echo "$@" | perl -ne 'print eval($_)."\n"'
+fi

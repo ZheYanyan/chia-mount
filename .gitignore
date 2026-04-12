@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# 旧版本脚本
+chia-mount-v2.0.sh
+
+# 测试生成的临时文件
+test_mock/chia-mount-test.sh
+test_mock/chia-mount.log
+test_mock/.mock_mounts
+test_mock/dev/sd*

@@ -1,0 +1,16 @@
+#!/bin/bash
+# Mock mktemp - 在 mock 目录创建临时文件/目录
+
+TEST_MOCK_DIR="/Users/jinbingjie/Desktop/加密盘挂在程序/test_mock"
+
+if [[ "$1" == "-d" ]]; then
+    # 创建临时目录
+    tmpdir="$TEST_MOCK_DIR/tmp.$(date +%s).$$"
+    mkdir -p "$tmpdir"
+    echo "$tmpdir"
+else
+    # 创建临时文件
+    tmpfile="$TEST_MOCK_DIR/tmp.$(date +%s).$$"
+    touch "$tmpfile"
+    echo "$tmpfile"
+fi

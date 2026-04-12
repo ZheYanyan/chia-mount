@@ -1,0 +1,3 @@
+#!/bin/bash
+# Mock sleep - 立即返回（不真的 sleep）
+exit 0

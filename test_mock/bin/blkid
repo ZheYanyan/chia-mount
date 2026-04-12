@@ -1,0 +1,28 @@
+#!/bin/bash
+# Mock blkid - 返回模拟文件系统信息
+
+# 获取设备名
+device="$1"
+
+# 模拟返回 filesystem type
+case "$device" in
+    /dev/sda|/dev/sda1)
+        echo '/dev/sda: UUID="abc123" TYPE="ext4"'
+        ;;
+    /dev/sdb|/dev/sdb1)
+        echo '/dev/sdb: UUID="def456" TYPE="xfs"'
+        ;;
+    /dev/sdc|/dev/sdc1)
+        echo '/dev/sdc: UUID="ghi789" TYPE="btrfs"'
+        ;;
+    /dev/sdd|/dev/sdd1)
+        echo '/dev/sdd: UUID="jkl012" TYPE="ext4"'
+        ;;
+    /dev/sde|/dev/sde1)
+        echo '/dev/sde: UUID="mno345" TYPE="xfs"'
+        ;;
+    *)
+        # 其他设备返回非零（模拟无文件系统）
+        exit 1
+        ;;
+esac

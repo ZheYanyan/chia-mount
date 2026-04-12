@@ -1,0 +1,3 @@
+#!/bin/bash
+# Mock chown - 模拟成功（不做实际 ownership 变更）
+exit 0

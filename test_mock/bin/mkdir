@@ -1,0 +1,4 @@
+#!/bin/bash
+# Mock mkdir - 使用真实 mkdir（加上 -p）
+
+/bin/mkdir -p "$@"

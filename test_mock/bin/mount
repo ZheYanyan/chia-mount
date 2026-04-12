@@ -1,0 +1,58 @@
+#!/bin/bash
+# Mock mount - 模拟挂载操作
+
+# 模拟已挂载的设备（不能重复挂载）
+MOCK_MOUNTS_FILE="${TEST_MOCK_DIR:-/Users/jinbingjie/Desktop/加密盘挂在程序/test_mock}/.mock_mounts"
+
+# 初始化挂载记录文件
+touch "$MOCK_MOUNTS_FILE"
+
+mount_point=""
+device=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -o)
+            shift
+            ;;
+        -t)
+            shift
+            ;;
+        /*)
+            if [[ -z "$device" ]]; then
+                device="$1"
+            else
+                mount_point="$1"
+            fi
+            ;;
+    esac
+    shift
+done
+
+# 如果没有传递设备和挂载点，显示帮助
+if [[ -z "$device" && -z "$mount_point" ]]; then
+    cat << 'EOF'
+Usage: mount [-h] [-v] [-r] [-w] [-o options] [-t type] device [mntpt]
+
+Options:
+  -h                display this help and exit
+  -V                display version and exit
+EOF
+    exit 0
+fi
+
+# 检查是否已挂载
+if grep -q "^${device} " "$MOCK_MOUNTS_FILE" 2>/dev/null; then
+    echo "mount: /dev/${device##*/} already mounted"
+    exit 1
+fi
+
+# 模拟挂载成功 - 创建mock设备文件（如果不存在）
+mock_dev_dir="$(dirname "$device")"
+if [[ ! -d "$mock_dev_dir" ]]; then
+    mkdir -p "$mock_dev_dir"
+fi
+touch "$device"
+
+echo "$device $mount_point" >> "$MOCK_MOUNTS_FILE"
+exit 0

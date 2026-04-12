@@ -1,0 +1,30 @@
+#!/bin/bash
+# Mock lsblk - 返回200个模拟大容量磁盘数据
+
+if [[ "$1" == "-l" ]]; then
+    # List 模式 - 生成200个磁盘
+    echo "NAME TYPE RO SIZE MOUNTPOINT"
+    for i in $(seq 1 200); do
+        # 生成 4T-10T 之间的容量
+        size=$((4 + (i % 7)))
+        # 格式化编号
+        num=$(printf "%03d" $i)
+        echo "sd${num} disk 0 ${size}T -"
+    done
+elif [[ "$1" == "-o" ]]; then
+    shift
+    cols="$1"
+    case "$cols" in
+        NAME,SIZE)
+            for i in $(seq 1 200); do
+                size=$((4 + (i % 7)))
+                echo "sd$(printf "%03d" $i) ${size}T"
+            done
+            ;;
+        *)
+            lsblk -l 2>/dev/null | awk 'NR==1 || $2=="disk" {print}'
+            ;;
+    esac
+else
+    lsblk -l 2>/dev/null | awk 'NR==1 || $2=="disk" {print}'
+fi

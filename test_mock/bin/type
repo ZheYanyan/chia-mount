@@ -1,0 +1,27 @@
+#!/bin/bash
+# Mock type - 模拟命令存在检查
+
+MOCK_BIN="/Users/jinbingjie/Desktop/加密盘挂在程序/test_mock/bin"
+
+# 模拟已安装的命令
+MOCK_COMMANDS="jq duf figlet qrencode btrfs lsscsi parallel mkdir chown mktemp bc sleep"
+
+cmd="$1"
+
+# 检查是否在 mock 命令列表中
+for c in $MOCK_COMMANDS; do
+    if [[ "$cmd" == "$c" ]]; then
+        echo "$cmd is $c"
+        exit 0
+    fi
+done
+
+# 对于 lsblk, df, blkid, mount, type 使用 mock 版本
+if [[ -x "$MOCK_BIN/$cmd" ]]; then
+    echo "$cmd is $MOCK_BIN/$cmd"
+    exit 0
+fi
+
+# 其他命令按实际情况处理
+command -v "$cmd" >/dev/null 2>&1
+exit $?
