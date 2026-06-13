@@ -2,7 +2,7 @@
 # Mock mount - 模拟挂载操作
 
 # 模拟已挂载的设备（不能重复挂载）
-MOCK_MOUNTS_FILE="${TEST_MOCK_DIR:-/Users/jinbingjie/Desktop/加密盘挂在程序/test_mock}/.mock_mounts"
+MOCK_MOUNTS_FILE="${TEST_MOCK_DIR:-/Users/用户名/Desktop/加密盘挂在程序/test_mock}/.mock_mounts"
 
 # 初始化挂载记录文件
 touch "$MOCK_MOUNTS_FILE"
